@@ -5,12 +5,8 @@ var Friend = function(name, id, friends, x, y, theta) {
 	this.theta = theta;
 	this.name = name;
 	this.pos = new p5.Vector(x, y, 0);
+	this.mutualFriends = friends;
 	this.friends = [];
-	for (var i=0; i<friends.length; i++) {
-		if (friends[i] && allfriends.hasOwnProperty(friends[i].id)) {
-			this.friends.push(allfriends[friends[i].id]);
-		}
-	}
 };
 
 Friend.prototype.render = function() {
@@ -40,4 +36,12 @@ Friend.prototype.drawName = function() {
 		rotate(this.theta);
 		text(this.name, 5, 0);
 	pop();
+};
+
+Friend.prototype.connectToFriends = function() {
+	for (var i =0; i<this.mutualFriends.length; i++) {
+		var fo = allfriends[this.mutualFriends[i].id];
+		if (fo) this.friends.push(fo);
+	}
+	delete this.mutualFriends;
 };

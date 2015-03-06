@@ -1,5 +1,5 @@
 var allfriends = {};
-var radius = 250;
+var radius = 200;
 
 function setup() {
 	createCanvas(displayWidth, displayHeight);
@@ -27,5 +27,8 @@ function setupFriends(data) {
 		var y = height / 2 + sin(theta) * radius;
 		var f = new Friend(name, id, mutualfriends, x, y, theta);
 		allfriends[id] = f;
+	}
+	for (var k in allfriends) {
+		allfriends[k].connectToFriends();
 	}
 };
