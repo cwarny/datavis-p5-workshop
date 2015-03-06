@@ -14,14 +14,15 @@ function draw() {
 };
 
 function setupFriends(data) {
-	for (var i=0; i<data.length; i++) {
-		var name = data[i].name;
-		var id = data[i].id;
+	var friends = data.friends.data;
+	for (var i=0; i<friends.length; i++) {
+		var name = friends[i].name;
+		var id = friends[i].id;
 		var mutualfriends = [];
-		if (data[i].hasOwnProperty("mutualfriends")) {
-			mutualfriends = data[i].mutualfriends.data;
+		if (friends[i].hasOwnProperty("mutualfriends")) {
+			mutualfriends = friends[i].mutualfriends.data;
 		}
-		var theta = map(i, 0, data.length, 0, TWO_PI);
+		var theta = map(i, 0, friends.length, 0, TWO_PI);
 		var x = width / 2 + cos(theta) * radius;
 		var y = height / 2 + sin(theta) * radius;
 		var f = new Friend(name, id, mutualfriends, x, y, theta);
