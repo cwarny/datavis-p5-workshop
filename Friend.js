@@ -33,7 +33,12 @@ Friend.prototype.mouseOver = function() {
 Friend.prototype.drawName = function() {
 	push();
 		translate(this.pos.x, this.pos.y);
-		rotate(this.theta);
+		if (this.theta > PI/2 && this.theta < 3*PI/2) {
+			rotate(this.theta-PI);
+			translate(-textWidth(this.name)-9, 0);
+		} else {
+			rotate(this.theta);
+		}
 		text(this.name, 5, 0);
 	pop();
 };

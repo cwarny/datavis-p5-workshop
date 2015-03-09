@@ -2,7 +2,7 @@ var allfriends = {};
 var radius = 200;
 
 function setup() {
-	createCanvas(displayWidth, displayHeight);
+	createCanvas(960, 547);
 	loadJSON("data.json", setupFriends);
 };
 
